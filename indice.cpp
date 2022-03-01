@@ -3,7 +3,7 @@
 //  indice della libreria "myLib.h"
 #include <iostream>
 #include <stdlib.h>
-#include "/Users/kekko/Downloads/c++/myLib.h"
+#include "myLib.h"
 using namespace std;
 #define M 20 //Linee max da fare
 #define LINE 38
