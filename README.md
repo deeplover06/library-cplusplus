@@ -1,6 +1,8 @@
 # library-cplusplus
 
-myLib.h
+#myLib.h
+
+
 Italian:
 In questa librearia ci sono varie funzioni che riguardano array, output ecc..
 Consultare l'indice.cpp li ci sono tutte le indicazioni per le singole funzioni
