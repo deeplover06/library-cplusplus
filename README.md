@@ -11,4 +11,4 @@ English:
 In this library there are various functions that concern arrays, outputs, etc.
 Consult the index.cpp there are all the indications for the individual functions
 
-Auotre: Francesco Pio Noceirno
+Autore: Francesco Pio Noceirno
