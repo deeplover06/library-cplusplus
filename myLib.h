@@ -125,12 +125,36 @@ void ordina(int dim, int v[])
     }
 }
 
-void stampa(int dim, int v[])
+void always_Ordina(int M, int num[])
+{
+    /**SALVA IN UN VETTORE I NUMERI E DURANTE LO STESSO INSERMENTO LI ORDINA*/
+    //Chiede in input i numeri da caricare nell'array
+    int x, j;
+    for (int i = 0; i < M; i++)
+    {
+        cout << "Inserisci numero " << i + 1 << ": ";
+        cin >> x;
+        j = 0;
+        while (num[j] < x && j < i) //esce se ho trovato un elemento piu' grande oppure sono terminati gli elementi
+        {
+            j++; //posizione in cui inserire
+        }
+        //sposto a destra gli elementi da j ad i
+        for (int y = i; y > j; y--)
+        {
+            num[y] = num[y - 1];
+        }
+        //inserisco in posizione j
+        num[j] = x;
+    }
+}
+
+void stampa(int dim, int ve[])
 {
     /*STAMPA VETTORE*/
     for (int i = 0; i < dim; i++)
     {
-        cout << v[i] << " ";
+        cout << ve[i] << " ";
     }
     cout << endl;
 }
