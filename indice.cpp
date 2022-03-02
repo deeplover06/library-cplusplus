@@ -37,9 +37,10 @@ int main()
         cout << "14.Stampa Figlet\n";
         linea(LINE, '-');
         cout << "\n15.Ordinamento\n";
-        cout << "16.Ricerca Lineare\n";
-        cout << "17.Ricerca Licotomica\n";
-        cout << "18.Ricerca in una stringa\n";
+        cout << "16.Ordina durante l'esecuzione\n";
+        cout << "17.Ricerca Lineare\n";
+        cout << "18.Ricerca Licotomica\n";
+        cout << "19.Ricerca in una stringa\n";
         linea(LINE, '-');
         cout << endl;
         cin >> s;
@@ -218,6 +219,16 @@ int main()
             break;
 
         case 16:
+            cout << "Ordina durante l'esecuzione\n";
+            cout << "Nome: "
+                 << "always_Ordina(int M,int num[])" << endl;
+            linea(M, '-');
+            cout << endl;
+            cout << "-Questa funzione permentte l'insermento dei numeri in un array e durante lo stesso inserimento l'ordinamento\n";
+            cout << "-Questa funzione richiede la dimensione e l'array dove salvare i numeri\n";
+            break;
+
+        case 17:
             cout << "Ricerca lineare\n";
             cout << "Nome: "
                  << "find(int ind, int x, int num[])" << endl;
@@ -227,7 +238,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione, il numero da trovare e l'array \n";
             break;
 
-        case 17:
+        case 18:
             cout << "Ricerca Licotomica\n";
             cout << "Nome: "
                  << "find_Bin(int n, int x, int v[])" << endl;
@@ -237,7 +248,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione, il numero da trovare e l'array \n";
             break;
 
-        case 18:
+        case 19:
             cout << "Ricerca in una stringa\n";
             cout << "Nome: "
                  << "find_str(int n, int x, int v[])" << endl;
