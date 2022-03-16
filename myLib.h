@@ -4,12 +4,13 @@
 #endif /* DBC844F0_9950_4ADE_9AD7_67453C5A0A7B */
 #include <iostream>
 #include <time.h>
+#include <string.h>
 #include <fstream>
 #include <string>
 #include <chrono>
 #include <thread>
 using namespace std;
-#define MAX 100
+
 /*
     Colore testo e sfondo
     Black    30	  40
@@ -54,15 +55,13 @@ int itoc(int b)
     return b;
 }
 
-void ran(int n)
+int ran(int nMax)
 {
     /*GENERATORE DI NUMERI CASUALI*/
     int nGen;
     srand(unsigned(time(NULL)));
-    for (int i = 0; i < n; i++)
-    {
-        nGen = rand() % MAX + 1;
-    }
+    nGen = rand() % nMax + 1;
+    return nGen;
 }
 
 void ins(int M, int v[])
@@ -76,12 +75,23 @@ void ins(int M, int v[])
     }
 }
 
-void ins_str(int M, string a[])
+void ins_Reale(int M, string out, float v[])
+{
+    /*INSERMENTO NUMERI IN UN VETTORE*/
+    //Chiede dimensione e vettore
+    for (int i = 0; i < M; i++)
+    {
+        cout << out << i + 1 << ": ";
+        cin >> v[i];
+    }
+}
+
+void ins_str(int M, string out, string a[])
 {
     /*INSERIMENTO DI UNA STRINGA UN ARRAY DI STRINGHE*/
     for (int i = 0; i < M; i++)
     {
-        cout << "Inserisci nome " << i + 1 << " ";
+        cout << out << i + 1 << " ";
         getline(cin, a[i]);
     }
 }
@@ -90,19 +100,59 @@ float xcent(int perc, float num)
 {
     /*CALCOLO '%' */
     //Chiede la percentuale da calc, e il numero da calc
+    const int cento = 100;
     float resto;
-    resto = (float)(perc * num) / MAX;
+    resto = (float)(perc * num) / cento;
     return resto;
 }
 
-void ins_Rand(int M, int v[])
+float mediaV(int dim, float v[])
+{
+    /*MEDIA VETTORE*/
+    //Chiede la dimenseione e il vettore
+    float media = 0;
+    for (int i = 0; i < dim; i++)
+    {
+        media += v[i];
+    }
+    media /= dim; //Calcola la media
+    return media;
+}
+
+int contaSuff(int dim, float n, float v[])
+{
+    /*CONTA SUFFICIENZE*/
+    //Chiede la dimensione, il numero da controllare e il vettore
+    int conta = 0;
+    for (int i = 0; i < dim; i++)
+    {
+        if (v[i] >= n) //Controlla x quante volte un numero è maggiore all' vettore e' presente
+            conta++;
+    }
+    return conta;
+}
+
+int contaInsuff(int dim, float n, float v[])
+{
+    /*CONTA INSFUCCIENZE*/
+    //Chiede la dimensione, il numero da controllare e il vettore
+    int conta = 0;
+    for (int i = 0; i < dim; i++)
+    {
+        if (v[i] < n) //Controlla x quante volte un numero minore all' vettore e' presente
+            conta++;
+    }
+    return conta;
+}
+
+void ins_Rand(int M, int nMax, int v[])
 {
     /*INSERMENTO DI NUEMRI RANDOM IN UN VETTORE*/
     //Chiede dimensione e vettore
     srand(unsigned(time(NULL)));
     for (int i = 0; i < M; i++)
     {
-        v[i] = rand() % MAX + 1;
+        v[i] = rand() % nMax + 1;
     }
 }
 
@@ -262,6 +312,21 @@ int maxV(int M, int v[])
     return max;
 }
 
+float maxV_Reale(int M, float v[])
+{
+    /*RICERCA DEL MAX IN UN ARRAY FLOAT*/
+    //Chiede la dimensione e il vettore da controllare
+    float max = v[0];
+    for (int i = 1; i < M; i++)
+    {
+        if (v[i] > max)
+        {
+            max = v[i];
+        }
+    }
+    return max;
+}
+
 int quantiMax(int M, int v[])
 {
     /* Quante volte si ripete il numero max */
@@ -298,6 +363,21 @@ int minV(int M, int v[])
     return min;
 }
 
+float minV_Reale(int M, float v[])
+{
+    /*RICERCA DEL MIN IN UN ARRAY FLOAT*/
+    //Chiede la dimensione e il vettore da controllare
+    float min = v[0];
+    for (int i = 1; i < M; i++)
+    {
+        if (v[i] < min)
+        {
+            min = v[i];
+        }
+    }
+    return min;
+}
+
 void sleep(int s)
 {
     /*SLEEP*/
@@ -318,11 +398,22 @@ void print_figlet(string nome)
     File.close();
 }
 
-void color(string word, string back, string frase)
+string color(string word, string back, string frase)
 {
     /*COLORE*/
     //Primo valore colore parola, sfondo parola
-    string tot = "\033[" + back + ";" + word + "m" + frase + "\033[0m\n";
+    string tot = "\033[" + back + ";" + word + "m" + frase + "\033[0m";
     //viene chisto il colore delle lettere, lo sofondo e la frase da stampare;
-    cout << tot;
+    return tot;
+}
+
+string colorNum(string word, string back, int num)
+{
+    /*COLORE*/
+    //Primo valore colore parola, sfondo parola
+    //Viene trasformato da numero in stringa per la stampa
+    string frase = to_string(num);
+    string tot = "\033[" + back + ";" + word + "m" + frase + "\033[0m";
+    //viene chisto il colore delle lettere, lo sofondo e la frase da stampare;
+    return tot;
 }
