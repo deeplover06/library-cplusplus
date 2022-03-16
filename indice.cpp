@@ -28,19 +28,21 @@ int main()
         cout << "6.Min vettore\n";
         cout << "7.Numeri Random\n";
         cout << "8.Calcolo Percentuale\n";
+        cout << "9.Media Vettore\n";
+        cout << "10.Conta N numeri\n";
         linea(LINE, '-');
-        cout << "\n9.Inserimento numeri -> vettore\n";
-        cout << "10.Insermento numeri random -> vettore\n";
-        cout << "11.Insermento in array di stringhe\n";
-        cout << "12.Stampa Array di numeri\n";
-        cout << "13.Stampa Array stringa\n";
-        cout << "14.Stampa Figlet\n";
+        cout << "\n11.Inserimento numeri -> vettore\n";
+        cout << "12.Insermento numeri random -> vettore\n";
+        cout << "13.Insermento in array di stringhe\n";
+        cout << "14.Stampa Array di numeri\n";
+        cout << "15.Stampa Array stringa\n";
+        cout << "16.Stampa Figlet\n";
         linea(LINE, '-');
-        cout << "\n15.Ordinamento\n";
-        cout << "16.Ordina durante l'esecuzione\n";
-        cout << "17.Ricerca Lineare\n";
-        cout << "18.Ricerca Licotomica\n";
-        cout << "19.Ricerca in una stringa\n";
+        cout << "\n17.Ordinamento\n";
+        cout << "18.Ordina durante l'esecuzione\n";
+        cout << "19.Ricerca Lineare\n";
+        cout << "20.Ricerca Licotomica\n";
+        cout << "21.Ricerca in una stringa\n";
         linea(LINE, '-');
         cout << endl;
         cin >> s;
@@ -88,16 +90,20 @@ int main()
         case 4:
             cout << "Colore testo\n";
             cout << "Nome: "
-                 << "color('32','40','Hw')" << endl;
+                 << "color(string '',string '',string ' ')" << endl
+                 << "colorNum(string ' ',string ' ',int n)\n";
             linea(M, '-');
             cout << endl;
-            cout << "-Come si vede nell'esempio stampa frasi a colori colore prodotto studiato per macchine UNIX \n";
-            color("1", "31", "Blod rosso");
-            color("32", "", "Testo verde");
-            color("4", "33", "Sotto lineato Giallo");
-            color("34", "", "Testo Blu");
-            cout << "-Questa funzione richiede il colore del testo, lo sofondo e il testo da stampare tutto come stringa\n";
-            cout << "-Abbimo varie tipologie di personallizzazione del testo nel caso consultare la tabella";
+            cout << "-Come si vede nell'esempio stampa frasi o numeri a colori colore prodotto studiato per macchine UNIX \n";
+            cout << color("1", "31", "Blod rosso") << endl;
+            cout << color("32", "", "Testo verde") << endl;
+            cout << color("4", "33", "Sotto lineato Giallo") << endl;
+            cout << color("34", "", "Testo Blu") << endl;
+            cout << colorNum("32", "1", 5) << endl;
+            cout << colorNum("33", "4", 100) << endl;
+            cout << "NB: per colorare un numero usare la funzione colorNum()\n";
+            cout << "-Questa funzione richiede il colore del testo, lo sfondo e il testo da stampare tutto come stringa\n";
+            cout << "-Abbimo varie tipologie di personallizzazione del testo nel caso consultare la tabella\n";
             break;
 
         case 5:
@@ -128,9 +134,9 @@ int main()
                  << "ran(int n)" << endl;
             linea(M, '-');
             cout << endl;
-            cout << "-Come si vede nell'esempio questa funzione genera numeri casuali\n";
-            cout << "5,7,3\n";
-            cout << "-Questa funzione richiede la dimensione e il vettore\n";
+            cout << "-Come si vede nell'esempio questa funzione genera numeri casuali:\n";
+            cout << ran(100);
+            cout << "\n-Questa funzione richiede il numero massimo da estrarre\n";
             break;
 
         case 8:
@@ -147,6 +153,28 @@ int main()
             break;
 
         case 9:
+            cout << "Media Vettore\n";
+            cout << "Nome: "
+                 << "mediaV(int dim, float v[])" << endl;
+            linea(M, '-');
+            cout << endl;
+            cout << "-Questa funzione permette di calcolare la media aritmetica di un vettore\n";
+            cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
+            break;
+
+        case 10:
+            cout << "Conta N numeri\n";
+            cout << "Nome: \n"
+                 << " contaSuff(int M,float n, float v[])" << endl
+                 << " contaIsuff(int dim,float n,flaot v[])\n";
+            linea(M, '-');
+            cout << endl;
+            cout << "-La prima funzione permette di contare quanti numeri sono maggiori di un numero X \n";
+            cout << "-La seconda funzione permette di contare quanti numeri sono minori di un numero X \n";
+            cout << "-Questa funzione richiede la dimensione dell'array, il numero x e l'array\n";
+            break;
+
+        case 11:
             cout << "Inserimento numeri -> vettore\n";
             cout << "Nome: "
                  << "ins(int M, int v[])" << endl;
@@ -156,7 +184,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
             break;
 
-        case 10:
+        case 12:
             cout << "Insermento numeri random -> vettore\n";
             cout << "Nome: "
                  << "ins_Rand(int M, int v[])" << endl;
@@ -166,7 +194,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
             break;
 
-        case 11:
+        case 13:
             cout << "Insermento in array di stringhe\n";
             cout << "Nome: "
                  << "ins_str(int M, string a[])" << endl;
@@ -176,7 +204,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
             break;
 
-        case 12:
+        case 14:
             cout << "Stampa array di numeri\n";
             cout << "Nome: "
                  << "stampa(int dim, float v[])" << endl;
@@ -186,7 +214,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione, l'array da stampare \n";
             break;
 
-        case 13:
+        case 15:
             cout << "Stampa Array stringa \n";
             cout << "Nome: "
                  << "stampa_str(int dim, string n[])" << endl;
@@ -195,7 +223,7 @@ int main()
             cout << "-Questa funzione permentte la stampa di un array numeri stringhe\n";
             cout << "-Questa funzione richiede la dimensione, l'array da stampare \n";
             break;
-        case 14:
+        case 16:
             cout << "Stampa Figlet\n";
             cout << "Nome: "
                  << "print_figlet(percorso file.txt)" << endl;
@@ -208,7 +236,7 @@ int main()
                     "\n ";
             break;
 
-        case 15:
+        case 17:
             cout << "Ordinamento\n";
             cout << "Nome: "
                  << "ordina(int dim, int v[])" << endl;
@@ -218,7 +246,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
             break;
 
-        case 16:
+        case 18:
             cout << "Ordina durante l'esecuzione\n";
             cout << "Nome: "
                  << "always_Ordina(int M,int num[])" << endl;
@@ -228,7 +256,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione e l'array dove salvare i numeri\n";
             break;
 
-        case 17:
+        case 19:
             cout << "Ricerca lineare\n";
             cout << "Nome: "
                  << "find(int ind, int x, int num[])" << endl;
@@ -238,7 +266,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione, il numero da trovare e l'array \n";
             break;
 
-        case 18:
+        case 20:
             cout << "Ricerca Licotomica\n";
             cout << "Nome: "
                  << "find_Bin(int n, int x, int v[])" << endl;
@@ -248,7 +276,7 @@ int main()
             cout << "-Questa funzione richiede la dimensione, il numero da trovare e l'array \n";
             break;
 
-        case 19:
+        case 21:
             cout << "Ricerca in una stringa\n";
             cout << "Nome: "
                  << "find_str(int n, int x, int v[])" << endl;
