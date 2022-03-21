@@ -1,36 +1,71 @@
-#ifndef DBC844F0_9950_4ADE_9AD7_67453C5A0A7B
-#define DBC844F0_9950_4ADE_9AD7_67453C5A0A7B
+#ifndef CF71767F_5BD6_42AC_B0E1_C219BCCE9F32
+#define CF71767F_5BD6_42AC_B0E1_C219BCCE9F32
 
-#endif /* DBC844F0_9950_4ADE_9AD7_67453C5A0A7B */
 #include <iostream>
 #include <time.h>
+#include <vector>
 #include <string.h>
 #include <fstream>
 #include <string>
 #include <chrono>
 #include <thread>
+#include <map>
+#include <sstream>
 using namespace std;
+#define EURO " €"
 
-/*
-    Colore testo e sfondo
-    Black    30	  40
-    Red      31   41
-    Green    32   42
-    Yellow   33   43
-    Blue     34   44
-    Magenta  35   45
-    Cyano    36   46
-    White    37   47
-    
-    Text option
-    Reset 0 Remove all styles
-    Bold 1 Testo in grassetto
-    Underline 4 Testo sottolineato
-    Inverse 7 inverte i colori 
-    Blod off 21 Testo normale
-    Underline off 24 Testo normale
-    Inverse off 27 Remove inverse
-    */
+void linea(int n, char s);
+int ctoi(char b);
+int itoc(int b);
+int ran(int nMax);
+
+template <typename Type>
+void carica(int dim, Type v[]);
+
+template <typename Type>
+void stampa(int dim, Type v[]);
+
+float xcent(int perc, float num);
+
+template <typename Type>
+float mediaV(int dim, Type v[]);
+
+template <typename Type>
+int contaSuff(int dim, float n, Type v[]);
+
+template <typename Type>
+int contaInsuff(int dim, float n, Type v[]);
+
+template <typename Type>
+void ins_Rand(int M, int nMax, Type v[]);
+
+template <typename Type>
+void ordina(int dim, Type v[]);
+
+template <typename Type>
+void always_Ordina(int M, Type num[]);
+
+template <typename Type>
+int find(int ind, int x, Type num[]);
+
+template <typename Type>
+int find_Bin(int n, int x, Type v[]);
+
+template <typename Type>
+int maxV(int M, Type v[]);
+
+template <typename Type>
+int quantiMax(int M, Type v[]);
+
+template <typename Type>
+int minV(int M, Type v[]);
+
+template <typename Type>
+void scambio(Type &a, Type &b);
+
+void sleep(int s);
+string color(string word, string back, string frase);
+string colorNum(string word, string back, int num);
 
 void linea(int n, char s)
 //stampa linee chiede un intero ovvero il numero di caratteri da stampare e un carattere
@@ -64,35 +99,24 @@ int ran(int nMax)
     return nGen;
 }
 
-void ins(int M, int v[])
+template <typename Type>
+void carica(int dim, string out, Type v[])
 {
-    /*INSERMENTO NUMERI IN UN VETTORE*/
-    //Chiede dimensione e vettore
-    for (int i = 0; i < M; i++)
-    {
-        cout << "inserisci numero " << i + 1 << ": ";
-        cin >> v[i];
-    }
-}
-
-void ins_Reale(int M, string out, float v[])
-{
-    /*INSERMENTO NUMERI IN UN VETTORE*/
-    //Chiede dimensione e vettore
-    for (int i = 0; i < M; i++)
+    //Grazie a template saremo in grado di non specificare il tipo nella funzione
+    for (int i = 0; i < dim; i++)
     {
         cout << out << i + 1 << ": ";
         cin >> v[i];
     }
 }
 
-void ins_str(int M, string out, string a[])
+template <typename Type>
+void stampa(int dim, Type v[])
 {
-    /*INSERIMENTO DI UNA STRINGA UN ARRAY DI STRINGHE*/
-    for (int i = 0; i < M; i++)
+    //Grazie a template saremo in grado di non specificare il tipo nella funzione
+    for (int i = 0; i < dim; i++)
     {
-        cout << out << i + 1 << " ";
-        getline(cin, a[i]);
+        cout << v[i] << " ";
     }
 }
 
@@ -106,7 +130,8 @@ float xcent(int perc, float num)
     return resto;
 }
 
-float mediaV(int dim, float v[])
+template <typename Type>
+float mediaV(int dim, Type v[])
 {
     /*MEDIA VETTORE*/
     //Chiede la dimenseione e il vettore
@@ -119,7 +144,8 @@ float mediaV(int dim, float v[])
     return media;
 }
 
-int contaSuff(int dim, float n, float v[])
+template <typename Type>
+int contaSuff(int dim, float n, Type v[])
 {
     /*CONTA SUFFICIENZE*/
     //Chiede la dimensione, il numero da controllare e il vettore
@@ -132,7 +158,8 @@ int contaSuff(int dim, float n, float v[])
     return conta;
 }
 
-int contaInsuff(int dim, float n, float v[])
+template <typename Type>
+int contaInsuff(int dim, float n, Type v[])
 {
     /*CONTA INSFUCCIENZE*/
     //Chiede la dimensione, il numero da controllare e il vettore
@@ -145,7 +172,8 @@ int contaInsuff(int dim, float n, float v[])
     return conta;
 }
 
-void ins_Rand(int M, int nMax, int v[])
+template <typename Type>
+void ins_Rand(int M, int nMax, Type v[])
 {
     /*INSERMENTO DI NUEMRI RANDOM IN UN VETTORE*/
     //Chiede dimensione e vettore
@@ -156,11 +184,12 @@ void ins_Rand(int M, int nMax, int v[])
     }
 }
 
-void ordina(int dim, int v[])
+template <typename Type>
+void ordina(int dim, Type v[])
 {
     /*ORDINAMENTO*/
     //chiede in input la dimensione dell'array e l'array
-    int temp;
+    Type temp;
     for (int i = 0; i < dim - 1; i++)
     {
         for (int j = i + 1; j < dim; j++)
@@ -175,7 +204,8 @@ void ordina(int dim, int v[])
     }
 }
 
-void always_Ordina(int M, int num[])
+template <typename Type>
+void always_Ordina(int M, Type num[])
 {
     /**SALVA IN UN VETTORE I NUMERI E DURANTE LO STESSO INSERMENTO LI ORDINA*/
     //Chiede in input i numeri da caricare nell'array
@@ -199,27 +229,8 @@ void always_Ordina(int M, int num[])
     }
 }
 
-void stampa(int dim, int ve[])
-{
-    /*STAMPA VETTORE*/
-    for (int i = 0; i < dim; i++)
-    {
-        cout << ve[i] << " ";
-    }
-    cout << endl;
-}
-
-void stampa_str(int dim, string n[])
-{
-    /*STAMPA VET STRINGHE*/
-    for (int i = 0; i < dim; i++)
-    {
-        cout << n[i] << " ";
-    }
-    cout << endl;
-}
-
-int find(int ind, int x, int num[])
+template <typename Type>
+int find(int ind, int x, Type num[])
 {
     /*RICERCA LINEARE*/
     //Chiede in input la grandezza dell vettore, il numero da cercare e il vettore dove cercare
@@ -242,31 +253,8 @@ int find(int ind, int x, int num[])
     return p;
 }
 
-int find_str(int M, string ns, string name[])
-{
-    /*RICERCA POSIZIONE DI UN NOME ALL'INETRNO DI UN ARRAY DI STRINGHE*/
-    int p;
-    bool trv = false;
-    //Nel caso si vuole modificare l'output basta cambiare il contenuto di messaggio o mes2
-    string messaggio = "Il nome ", mes2 = " si trv alla ps: ";
-    for (int i = 0; i < M && !trv; i++)
-    {
-        if (name[i] == ns)
-        {
-            p = i;
-            trv = true;
-        }
-    }
-    if (trv)
-    {
-        cout << messaggio << ns << mes2 << p << endl;
-    }
-    else
-        cout << "Non trovato\n";
-    return p;
-}
-
-int find_Bin(int n, int x, int v[])
+template <typename Type>
+int find_Bin(int n, int x, Type v[])
 {
     /**RICERCA BINARIA*/
     //chiede in input la dimensione, il vettore e il numero da cercare
@@ -297,11 +285,12 @@ int find_Bin(int n, int x, int v[])
     return indCalc;
 }
 
-int maxV(int M, int v[])
+template <typename Type>
+int maxV(int M, Type v[])
 {
     /*RICERCA DEL MAX IN UN ARRAY*/
     //Chiede la dimensione e il vettore da controllare
-    int max = v[0];
+    Type max = v[0];
     for (int i = 1; i < M; i++)
     {
         if (v[i] > max)
@@ -312,26 +301,12 @@ int maxV(int M, int v[])
     return max;
 }
 
-float maxV_Reale(int M, float v[])
-{
-    /*RICERCA DEL MAX IN UN ARRAY FLOAT*/
-    //Chiede la dimensione e il vettore da controllare
-    float max = v[0];
-    for (int i = 1; i < M; i++)
-    {
-        if (v[i] > max)
-        {
-            max = v[i];
-        }
-    }
-    return max;
-}
-
-int quantiMax(int M, int v[])
+template <typename Type>
+int quantiMax(int M, Type v[])
 {
     /* Quante volte si ripete il numero max */
     int cont;
-    int max = v[0];
+    Type max = v[0];
     for (int i = 1; i < M; i++)
     {
         if (v[i] > max)
@@ -348,11 +323,12 @@ int quantiMax(int M, int v[])
     return cont;
 }
 
-int minV(int M, int v[])
+template <typename Type>
+int minV(int M, Type v[])
 {
     /*RICERCA DEL MIN IN UN ARRAY*/
     //Chiede la dimensione e il vettore da controllare
-    int min = v[0];
+    Type min = v[0];
     for (int i = 1; i < M; i++)
     {
         if (v[i] < min)
@@ -363,19 +339,13 @@ int minV(int M, int v[])
     return min;
 }
 
-float minV_Reale(int M, float v[])
+template <typename Type>
+void scambio(Type &a, Type &b)
 {
-    /*RICERCA DEL MIN IN UN ARRAY FLOAT*/
-    //Chiede la dimensione e il vettore da controllare
-    float min = v[0];
-    for (int i = 1; i < M; i++)
-    {
-        if (v[i] < min)
-        {
-            min = v[i];
-        }
-    }
-    return min;
+    Type temp;
+    temp = a;
+    a = b;
+    b = temp;
 }
 
 void sleep(int s)
@@ -417,3 +387,5 @@ string colorNum(string word, string back, int num)
     //viene chisto il colore delle lettere, lo sofondo e la frase da stampare;
     return tot;
 }
+
+#endif /* CF71767F_5BD6_42AC_B0E1_C219BCCE9F32 */
