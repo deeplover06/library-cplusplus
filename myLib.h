@@ -16,7 +16,7 @@ using namespace std;
 
 void linea(int n, char s);
 int ctoi(char b);
-int itoc(int b);
+char itoc(int b);
 int ran(int nMax);
 
 template <typename Type>
@@ -83,11 +83,11 @@ int ctoi(char b) //da carattere ad intero
     return i;
 }
 
-int itoc(int b)
+char itoc(int b)
 {
     char v;
     v = (char)b;
-    return b;
+    return v;
 }
 
 int ran(int nMax)
