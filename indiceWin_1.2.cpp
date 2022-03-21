@@ -1,24 +1,23 @@
-//  indiceWin.cpp
-//  Autore:Francesco Pio Nocerino
-//  indice della libreria "myLib.h"
+//	indice_Win1.2.cpp
+//	Autore:Francesco Pio Nocerino
+//	Indice Libreria
 #include <iostream>
-#include <stdlib.h>
 #include "myLib.h"
 using namespace std;
 #define M 20 //Linee max da fare
 #define LINE 38
 void figlet();   //STAMPA FIGLET
 void figletes(); //STAMPA FIGLET DI ES
+
 int main()
 {
-    int s, v[2] = {3, 7}; //vettore esempio
-    char s1;              //scelta
+    int s, v[2] = {3, 7};
+    char scelta;
     do
     {
-        /*MENU*/
+            //MENU
         figlet();
-        cout << endl;
-        cout << "1.Disegnare linee\n";
+        cout << "1.Disegnare Linee\n";
         linea(LINE, '-');
         cout << "\n2.Carattere -> intero\n";
         cout << "3.Sleep\n";
@@ -31,18 +30,14 @@ int main()
         cout << "9.Media Vettore\n";
         cout << "10.Conta N numeri\n";
         linea(LINE, '-');
-        cout << "\n11.Inserimento numeri -> vettore\n";
-        cout << "12.Insermento numeri random -> vettore\n";
-        cout << "13.Insermento in array di stringhe\n";
-        cout << "14.Stampa Array di numeri\n";
-        cout << "15.Stampa Array stringa\n";
-        cout << "16.Stampa Figlet\n";
+        cout << "\n11.Inserimento Dati in un array\n";
+        cout << "12.Stampa array\n";
+        cout << "13.Stampa Figlet\n";
         linea(LINE, '-');
-        cout << "\n17.Ordinamento\n";
-        cout << "18.Ordina durante l'esecuzione\n";
-        cout << "19.Ricerca Lineare\n";
-        cout << "20.Ricerca Licotomica\n";
-        cout << "21.Ricerca in una stringa\n";
+        cout << "\n14.Ordinamento\n";
+        cout << "15.Ordina durante l'esecuzione\n";
+        cout << "16.Ricerca Lineare\n";
+        cout << "17.Ricerca Licotomica\n";
         linea(LINE, '-');
         cout << endl;
         cin >> s;
@@ -51,7 +46,6 @@ int main()
         system("cls");
         switch (s)
         {
-            /*SELEZIONE*/
         case 1:
             cout << "Disegnare line\n";
             cout << "Nome: "
@@ -75,7 +69,6 @@ int main()
             cout << endl;
             cout << "-Il numero " << ctoi('3') << " corrisponde al numero 3\n";
             break;
-
         case 3:
             cout << "Sleep\n";
             cout << "Nome: "
@@ -109,23 +102,23 @@ int main()
         case 5:
             cout << "Max vettore\n";
             cout << "Nome: "
-                 << "maxV(int M, int v[])" << endl;
+                 << "maxV(int M, int/float v[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Come si vede nell'esempio questa funzione ricercara il massimo in un vettore\n";
             cout << maxV(2, v) << endl;
-            cout << "-Questa funzione richiede la dimensione e il vettore\n";
+            cout << "-Questa funzione richiede la dimensione e il vettore il tipo del vettore può essere qualsiasi (int/float)\n";
             break;
 
         case 6:
             cout << "Min vettore\n";
             cout << "Nome: "
-                 << "minV(int M, int v[])" << endl;
+                 << "minV(int M, int/float v[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Come si vede nell'esempio questa funzione ricercara il minimo in un vettore\n";
             cout << minV(2, v) << endl;
-            cout << "-Questa funzione richiede la dimensione e il vettore\n";
+            cout << "-Questa funzione richiede la dimensione e il vettore il tipo del vettore può essere qualsiasi (int/float)\n";
             break;
 
         case 7:
@@ -155,75 +148,45 @@ int main()
         case 9:
             cout << "Media Vettore\n";
             cout << "Nome: "
-                 << "mediaV(int dim, float v[])" << endl;
+                 << "mediaV(int dim, int/float v[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Questa funzione permette di calcolare la media aritmetica di un vettore\n";
-            cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
+            cout << "-Questa funzione richiede la dimensione dell'array e l'array il tipo del vettore può essere int/float \n";
             break;
 
         case 10:
             cout << "Conta N numeri\n";
             cout << "Nome: \n"
-                 << " contaSuff(int M,float n, float v[])" << endl
-                 << " contaIsuff(int dim,float n,flaot v[])\n";
+                 << " contaSuff(int M,float n, int/float v[])" << endl
+                 << " contaIsuff(int M,float n,int/float v[])\n";
             linea(M, '-');
             cout << endl;
             cout << "-La prima funzione permette di contare quanti numeri sono maggiori di un numero X \n";
             cout << "-La seconda funzione permette di contare quanti numeri sono minori di un numero X \n";
-            cout << "-Questa funzione richiede la dimensione dell'array, il numero x e l'array\n";
+            cout << "-Questa funzione richiede la dimensione dell'array, il numero x e l'array il tipo del vettore può essere int/float \n";
             break;
 
         case 11:
-            cout << "Inserimento numeri -> vettore\n";
+            cout << "Inserimento Dati in un array\n";
             cout << "Nome: "
-                 << "ins(int M, int v[])" << endl;
+                 << "ins(int M, int/float/char/string v[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Questa funzione permentte l'insermento di numeri all'inetrno di un vettore\n";
-            cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
+            cout << "-Questa funzione richiede la dimensione dell'array e l'array, Il tipo dell'array può essere di qualsiasi tipo\n";
             break;
-
         case 12:
-            cout << "Insermento numeri random -> vettore\n";
+            cout << "Stampa array\n";
             cout << "Nome: "
-                 << "ins_Rand(int M, int v[])" << endl;
-            linea(M, '-');
-            cout << endl;
-            cout << "-Questa funzione permentte l'insermento di numeri random all'inetrno di un vettore\n";
-            cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
-            break;
-
-        case 13:
-            cout << "Insermento in array di stringhe\n";
-            cout << "Nome: "
-                 << "ins_str(int M, string a[])" << endl;
-            linea(M, '-');
-            cout << endl;
-            cout << "-Questa funzione permentte l'insermento di stringhe all'interno di un array di setringhe\n";
-            cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
-            break;
-
-        case 14:
-            cout << "Stampa array di numeri\n";
-            cout << "Nome: "
-                 << "stampa(int dim, float v[])" << endl;
+                 << "stampa(int dim, int/float/char/string v[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Questa funzione permentte la stampa di un array numeri interi/reali\n";
-            cout << "-Questa funzione richiede la dimensione, l'array da stampare \n";
+            cout << "-Questa funzione richiede la dimensione, l'array da stampare, Il tipo dell'array può essere di qualsiasi tipo \n";
             break;
 
-        case 15:
-            cout << "Stampa Array stringa \n";
-            cout << "Nome: "
-                 << "stampa_str(int dim, string n[])" << endl;
-            linea(M, '-');
-            cout << endl;
-            cout << "-Questa funzione permentte la stampa di un array numeri stringhe\n";
-            cout << "-Questa funzione richiede la dimensione, l'array da stampare \n";
-            break;
-        case 16:
+        case 13:
             cout << "Stampa Figlet\n";
             cout << "Nome: "
                  << "print_figlet(percorso file.txt)" << endl;
@@ -236,67 +199,53 @@ int main()
                     "\n ";
             break;
 
-        case 17:
+        case 14:
             cout << "Ordinamento\n";
             cout << "Nome: "
-                 << "ordina(int dim, int v[])" << endl;
+                 << "ordina(int dim, int/float v[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Questa funzione permentte l'ordinamento dei numeri all'interno di un array\n";
-            cout << "-Questa funzione richiede la dimensione dell'array e l'array\n";
+            cout << "-Questa funzione richiede la dimensione dell'array e l'array, Il tipo dell'array può essere int/float\n";
             break;
 
-        case 18:
+        case 15:
             cout << "Ordina durante l'esecuzione\n";
             cout << "Nome: "
-                 << "always_Ordina(int M,int num[])" << endl;
+                 << "always_Ordina(int M,int/float num[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Questa funzione permentte l'insermento dei numeri in un array e durante lo stesso inserimento l'ordinamento\n";
-            cout << "-Questa funzione richiede la dimensione e l'array dove salvare i numeri\n";
+            cout << "-Questa funzione richiede la dimensione e l'array dove salvare i numeri, Il tipo dell'array può essere int/float\n";
             break;
 
-        case 19:
+        case 16:
             cout << "Ricerca lineare\n";
             cout << "Nome: "
-                 << "find(int ind, int x, int num[])" << endl;
+                 << "find(int ind, int x, int/float/char/string num[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Questa funzione permentte il ritrovamento di un numero all'interno di un array\n";
-            cout << "-Questa funzione richiede la dimensione, il numero da trovare e l'array \n";
+            cout << "-Questa funzione richiede la dimensione, il numero da trovare e l'array, Il tipo dell'array può essere di qualsiasi tipo\n";
             break;
 
-        case 20:
+        case 17:
             cout << "Ricerca Licotomica\n";
             cout << "Nome: "
-                 << "find_Bin(int n, int x, int v[])" << endl;
+                 << "find_Bin(int n, int x, int/float v[])" << endl;
             linea(M, '-');
             cout << endl;
             cout << "-Questa funzione permentte il ritrovamento di un numero all'interno di un array\n";
-            cout << "-Questa funzione richiede la dimensione, il numero da trovare e l'array \n";
-            break;
-
-        case 21:
-            cout << "Ricerca in una stringa\n";
-            cout << "Nome: "
-                 << "find_str(int n, int x, int v[])" << endl;
-            linea(M, '-');
-            cout << endl;
-            cout << "-Questa funzione permentte il ritrovamento di una stringa all'interno di un array\n";
-            cout << "-Questa funzione richiede la dimensione, e la parola da ricercare nell'array\n";
+            cout << "-Questa funzione richiede la dimensione, il numero da trovare e l'array, Il tipo dell'array può essere int/float\n";
             break;
 
         default:
             cout << "Inserimento non valido\n";
             break;
         }
-        //Richiesta se continuare con la visualizazzione o no?
         cout << "Vuoi continuare? (s/n) ";
-        cin >> s1;
-        //Prende 1 secondo si pausa e cancella la console
-        sleep(1);
-        system("cls");
-    } while (s1 == 's');
+        cin >> scelta;
+    } while (scelta == 's' || scelta == 'S');
     return 0;
 }
 
